@@ -1,0 +1,50 @@
+PROBLEM:
+        Input:
+              5
+            /  \
+           2    3
+Output: 1
+
+        Example 2:
+
+        Input:
+               10
+             /   \
+            20   30 
+          /   \
+         40   60
+Output: 0
+
+
+
+SOLUTION:
+
+
+bool isHeap(struct Node * tree)
+    {
+        queue<Node*> q;
+        q.push(tree);
+        bool a = false;
+        
+        while(!q.empty()){
+            Node* temp = q.front();
+            q.pop();
+            if(temp->left){
+                if(a || temp->left->data > temp->data) return false;
+                else q.push(temp->left);
+            }
+            if(temp->right){
+                if(a || temp->right->data > temp->data) return false;
+                else q.push(temp->right);
+            }
+            else{
+                a = true;
+            }
+        }
+        return true;
+    }
+    
+    
+    
+    
+    
